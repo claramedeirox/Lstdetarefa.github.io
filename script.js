@@ -20,6 +20,7 @@ function addTask() {
 }
 
 function editTask(button) {
+    
     const li = button.parentElement;
     const span = li.querySelector("span");
     const newText = prompt("Editar tarefa:", span.textContent);

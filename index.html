@@ -1,24 +1,28 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
-    <link rel="stylesheet" href="style.css">
-    <title>Lista de tarefas</title>
-
+    <link rel="stylesheet" href="style01.css">
+    <title>lista de tarefa</title>
 </head>
 
 <body>
+    <form class="Login">
+        <h3>Login</h3>
+        <input type="text" placeholder="Login" id="login">
+        <input type="password" placeholder="Senha" id="senha">
+        <input type="submit" placeholder="Entrar" id="Entrar" onclick="logar(); return false">
+        </div>
 
-    <div class="container">
-        <h1>Lista de tarefas</h1>
-        <input type="text" id="taskInput" placeholder="Adicione uma tarefa...">
-        <button onclick="addTask()">Adicionar</button>
-        <ul id="taskList"></ul>
-    </div>
-
-    <script src="script.js"></script>
-    
+        <div>
+            <a href="#" class="forget">Esqueceu a senha </a>
+        </div>
+        
+        
+    </form>
+    <script src="script02.js"></script>
 </body>
+</html>
