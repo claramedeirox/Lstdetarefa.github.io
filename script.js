@@ -33,6 +33,17 @@ function deleteTask(button) {
     const li = button.parentElement;
     tasklist.removeChild(li);
 }
-        
-        
+
+function escapaCaracteres(str){
+    '&';'&amp',
+    '<';'&lt',
+    '>'; '&gt',
+    '"';'&quot',
+    "'";'&#x27',
+    '/'; '&#x2F';
+};
+
+return str.replace(/[&<>"'/]/g, function(matched){
+    return mapaCaracteres[matched];
+});
     
