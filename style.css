@@ -66,3 +66,23 @@ li span {
 .deleteButton {
     margin-left: 5px;
 }
+
+.caixa{
+    padding: 10px;
+}
+
+@media screen and (max-width: 337px){
+    
+    .editbutton{
+        background-color: red;
+        flex-direction: column;
+
+    }
+    .deletebutton{
+        background-color: red;
+        display: inline;
+    
+       
+    }
+    
+}

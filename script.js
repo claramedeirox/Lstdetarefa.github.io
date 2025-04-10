@@ -1,15 +1,17 @@
 const tasklist = document.getElementById("taskList");
 const taskInput = document.getElementById("taskInput");
 
+
 function addTask() {
     const taskText = taskInput.value.trim();
     if (taskText !== "") {
 
         const maxText = taskText.substring(0, 35);
+        
 
         const li = document.createElement("li");
         li.innerHTML = `
-            
+             
             <span>${maxText}</span>
             <button class="editButton" onClick="editTask(this)">Editar</button>
             <button class="deleteButton" onClick="deleteTask(this)">Remover</button>
@@ -34,16 +36,5 @@ function deleteTask(button) {
     tasklist.removeChild(li);
 }
 
-function escapaCaracteres(str){
-    '&';'&amp',
-    '<';'&lt',
-    '>'; '&gt',
-    '"';'&quot',
-    "'";'&#x27',
-    '/'; '&#x2F';
-};
 
-return str.replace(/[&<>"'/]/g, function(matched){
-    return mapaCaracteres[matched];
-});
-    
+

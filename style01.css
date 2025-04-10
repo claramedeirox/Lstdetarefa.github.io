@@ -92,3 +92,12 @@ li span {
 .deleteButton {
     margin-left: 5px;
 }
+
+@media screen and (max-width: 337px){
+    input{
+        flex-direction: row-reverse;
+
+        background-color: red;
+    }
+    
+}
