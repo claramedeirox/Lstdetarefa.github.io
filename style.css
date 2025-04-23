@@ -8,10 +8,14 @@
 /* Estilização do corpo da página */
 body {
   background-color: #4a2d85; /* Define uma cor de fundo roxa escura */
-  color: #fff; /* Define a cor do texto como branca */
+  color: #000000; /* Define a cor do texto como branca */
   font-family: 'Roboto', sans-serif; /* Usa a fonte Roboto, ou uma fonte sans-serif como fallback */
   margin: 0; /* Remove margens externas */
   padding: 0; /* Remove espaçamento interno */
+}
+
+h1{
+  color:#fff
 }
 
 /* Estilo aplicado aos formulários de login e containers principais */
@@ -87,7 +91,7 @@ li span {
 /* Estilo dos botões de edição e exclusão */
 .editButton, .deleteButton {
   background-color: #321081; /* Cor de fundo roxa escura */
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 5px;
   padding: 6px 12px;
@@ -127,5 +131,153 @@ li:hover {
   li {
     flex-direction: column; /* Mantém elementos em coluna */
     gap: 10px; /* Espaço entre os elementos */
+  }
+}
+
+
+
+
+/* Acessibilidade: elementos escondidos só visualmente */
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  margin: 5px;
+}
+
+.edit-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Alinhamento dos botões dentro do li */
+ul#task-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #500257;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+/* Ajuste para botões quando a tela for pequena */
+@media (max-width: 480px) {
+  ul#task-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .edit-btn, .delete-btn {
+    width: 100%;  /* Torna os botões mais largos em telas pequenas */
+    margin-top: 5px;
+  }
+}
+button:focus {
+  outline: 2px solid #000; /* Foco visual */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:active {
+  background-color: #003d82;
+}
+
+/* Para lista de tarefas */
+ul#task-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+ul#task-list li input[type="text"] {
+  flex: 1;
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #000000;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+/* Botões Editar e Excluir */
+.edit-btn, .delete-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  margin: 5px;
+}
+
+.edit-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #218838;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: rgb(2, 2, 2);
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Foco e acessibilidade para a tabulação */
+button:focus {
+  outline: 2px solid #000;
+}
+
+ul#task-list li button:focus {
+  outline: 2px solid #000;
+}
+
+/* Media Query para telas menores */
+@media (max-width: 480px) {
+  ul#task-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .edit-btn, .delete-btn {
+    width: 100%;  /* Torna os botões mais largos em telas pequenas */
+    margin-top: 5px;
   }
 }

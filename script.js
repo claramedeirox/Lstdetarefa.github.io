@@ -79,3 +79,53 @@ if (window.location.pathname.includes('tarefas.html')) {
   }
   
   renderizar();
+  const tasks = [];
+
+document.getElementById('task-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const taskText = document.getElementById('task').value.trim();
+  if (taskText) {
+    tasks.push(taskText);
+    document.getElementById('task').value = ''; // Limpa o campo
+    renderTasks();
+  }
+});
+
+function renderTasks() {
+  const taskList = document.getElementById('task-list');
+  taskList.innerHTML = ''; // Limpa a lista antes de renderizar novamente
+
+  tasks.forEach((task, index) => {
+    const li = document.createElement('li');
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = task;
+    input.setAttribute('readonly', true); // Deixa o texto como apenas leitura
+    input.setAttribute('aria-label', `Tarefa: ${task}`); // Descrição para leitores de tela
+
+    const editBtn = document.createElement('button');
+    editBtn.textContent = 'Editar';
+    editBtn.className = 'edit-btn';
+    editBtn.setAttribute('aria-label', `Editar tarefa "${task}"`); // Descrição do botão para leitores de tela
+    editBtn.addEventListener('click', () => {
+      input.removeAttribute('readonly'); // Permite editar
+      input.focus();
+    });
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Excluir';
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.setAttribute('aria-label', `Excluir tarefa "${task}"`); // Descrição do botão para leitores de tela
+    deleteBtn.addEventListener('click', () => {
+      tasks.splice(index, 1); // Remove a tarefa
+      renderTasks();
+    });
+
+    li.appendChild(input);
+    li.appendChild(editBtn);
+    li.appendChild(deleteBtn);
+    taskList.appendChild(li);
+  });
+}

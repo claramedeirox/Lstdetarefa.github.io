@@ -2,41 +2,53 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <!-- Faz o layout se adaptar a diferentes tamanhos de tela -->
-  <title>Login</title> <!-- Título da aba do navegador -->
-  <link rel="stylesheet" href="style.css" /> <!-- Importa o arquivo CSS externo -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="container"> <!-- Container principal da página -->
-    <h1>Login</h1> <!-- Título da seção de login -->
-    <form id="login-form"> <!-- Formulário de login com ID para acesso via JavaScript -->
-      <label for="user">Usuário</label> <!-- Rótulo do campo de usuário -->
-      <input type="text" id="user" required /> <!-- Campo de entrada para o nome de usuário -->
+  <main class="container">
+    <h1>Login</h1>
+    <form id="login-form">
+      <label for="user">Usuário</label>
+      <input type="text" id="user" required />
 
-      <label for="pass">Senha</label> <!-- Rótulo do campo de senha -->
-      <input type="password" id="pass" required /> <!-- Campo de entrada para a senha -->
+      <label for="pass">Senha</label>
+      <input type="password" id="pass" required />
 
-      <button type="submit">Entrar</button> <!-- Botão para enviar o formulário -->
+      <button type="submit">Entrar</button>
     </form>
-    <!-- Link para a página de cadastro caso o usuário não tenha conta -->
     <p>Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
   </main>
 
   <script>
-    // Adiciona um ouvinte de evento para quando o formulário for enviado
-    document.getElementById('login-form').addEventListener('submit', function(e) {
-      e.preventDefault(); // Evita que a página seja recarregada
-      const user = document.getElementById('user').value.trim(); // Pega o valor do campo usuário
-      const pass = btoa(document.getElementById('pass').value); // Codifica a senha em Base64 (simulação)
+    async function hash(text) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(text);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
 
-      const stored = JSON.parse(localStorage.getItem('user')); // Recupera os dados armazenados no localStorage
+    document.getElementById('login-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
 
-      // Verifica se os dados digitados correspondem aos dados salvos
-      if (stored && user === stored.user && pass === stored.pass) {
-        localStorage.setItem('auth', 'true'); // Marca o usuário como autenticado
-        window.location.href = 'tarefas.html'; // Redireciona para a página de tarefas
+      const user = document.getElementById('user').value.trim();
+      const pass = document.getElementById('pass').value;
+
+      const stored = JSON.parse(localStorage.getItem('user'));
+
+      if (!stored || user !== stored.user) {
+        alert('Usuário não encontrado.');
+        return;
+      }
+
+      const hashedPass = await hash(pass);
+
+      if (hashedPass === stored.pass) {
+        localStorage.setItem('auth', 'true');
+        window.location.href = 'tarefas.html';
       } else {
-        alert('Usuário ou senha incorretos.'); // Mostra alerta de erro
+        alert('Senha incorreta.');
       }
     });
   </script>

@@ -1,41 +1,49 @@
-<!DOCTYPE html> 
-<html lang="pt-BR"> 
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" /> 
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cadastro</title> 
-  <link rel="stylesheet" href="style.css" /> 
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="container"> 
-    <h1>Cadastro</h1> 
+  <main class="container">
+    <h1>Cadastro</h1>
     <form id="register-form">
+      <label for="user">Usuário</label>
+      <input type="text" id="user" required />
 
-      <label for="user">Usuário</label> 
-      <input type="text" id="user" required /> 
+      <label for="pass">Senha</label>
+      <input type="password" id="pass" required />
 
-      <label for="pass">Senha</label> 
-      <input type="password" id="pass" required /> 
-
-      <button type="submit">Cadastrar</button> 
+      <button type="submit">Cadastrar</button>
     </form>
-    <p>Já tem conta?<a href="login.html">Entrar</a></p> 
+    <p>Já tem conta? <a href="login.html">Entrar</a></p>
   </main>
 
   <script>
-   
-    document.getElementById('register-form').addEventListener('submit', function(e) {
+    async function hash(text) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(text);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    document.getElementById('register-form').addEventListener('submit', async function(e) {
       e.preventDefault();
 
-      const user = document.getElementById('user').value.trim(); 
-      const pass = btoa(document.getElementById('pass').value); 
+      const user = document.getElementById('user').value.trim();
+      const pass = document.getElementById('pass').value;
 
-      if (user && pass) { 
-        localStorage.setItem('user', JSON.stringify({ user, pass }));
-        alert('Cadastro realizado com sucesso!'); 
-        window.location.href = 'login.html';
-      }
+      if (!user || !pass) return alert('Preencha todos os campos.');
+
+      const hashedPass = await hash(pass);
+
+      localStorage.setItem('user', JSON.stringify({ user, pass: hashedPass }));
+      alert('Cadastro realizado com sucesso!');
+      window.location.href = 'login.html';
     });
   </script>
 </body>
+</html>
 </html>
