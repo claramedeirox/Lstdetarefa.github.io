@@ -1,28 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html> 
+<html lang="pt-BR"> 
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style01.css">
-    <title>lista de tarefa</title>
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <!-- Faz o layout se adaptar a diferentes tamanhos de tela -->
+  <title>Bem-vindo - Lista de Tarefas</title> <!-- Título da aba do navegador -->
+  <link rel="stylesheet" href="style.css" /> <!-- Importa o arquivo CSS externo -->
 </head>
-
 <body>
-    <form class="Login">
-        <h3>Login</h3>
-        <input type="text" placeholder="Login" id="login">
-        <input type="password" placeholder="Senha" id="senha">
-        <input type="submit" placeholder="Entrar" id="Entrar" onclick="logar(); return false">
-        </div>
+  <!-- Conteúdo principal da página, centralizado -->
+  <main class="container" style="text-align: center;">
+    <h1>Bem-vindo à Lista de Tarefas</h1> <!-- Título principal da página -->
+    <p>Organize seu dia com praticidade e segurança.</p> <!-- Subtítulo explicativo -->
 
-        <div>
-            <a href="#" class="forget">Esqueceu a senha </a>
-        </div>
-        
-        
-    </form>
-    <script src="script02.js"></script>
+    <div style="margin-top: 30px;"> <!-- Div com espaçamento superior -->
+      <!-- Link que leva para a página de login -->
+      <a href="login.html">
+        <button aria-label="Ir para página de login">Entrar</button> <!-- Botão de login com acessibilidade -->
+      </a>
+      <!-- Link que leva para a página de cadastro -->
+      <a href="cadastro.html">
+        <button aria-label="Ir para página de cadastro" style="margin-left: 10px; background: #28a745;">
+          Cadastrar-se <!-- Botão de cadastro com cor diferenciada e espaçamento -->
+        </button>
+      </a>
+    </div>
+  </main>
 </body>
 </html>

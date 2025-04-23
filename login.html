@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <!-- Faz o layout se adaptar a diferentes tamanhos de tela -->
+  <title>Login</title> <!-- Título da aba do navegador -->
+  <link rel="stylesheet" href="style.css" /> <!-- Importa o arquivo CSS externo -->
+</head>
+<body>
+  <main class="container"> <!-- Container principal da página -->
+    <h1>Login</h1> <!-- Título da seção de login -->
+    <form id="login-form"> <!-- Formulário de login com ID para acesso via JavaScript -->
+      <label for="user">Usuário</label> <!-- Rótulo do campo de usuário -->
+      <input type="text" id="user" required /> <!-- Campo de entrada para o nome de usuário -->
+
+      <label for="pass">Senha</label> <!-- Rótulo do campo de senha -->
+      <input type="password" id="pass" required /> <!-- Campo de entrada para a senha -->
+
+      <button type="submit">Entrar</button> <!-- Botão para enviar o formulário -->
+    </form>
+    <!-- Link para a página de cadastro caso o usuário não tenha conta -->
+    <p>Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+  </main>
+
+  <script>
+    // Adiciona um ouvinte de evento para quando o formulário for enviado
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault(); // Evita que a página seja recarregada
+      const user = document.getElementById('user').value.trim(); // Pega o valor do campo usuário
+      const pass = btoa(document.getElementById('pass').value); // Codifica a senha em Base64 (simulação)
+
+      const stored = JSON.parse(localStorage.getItem('user')); // Recupera os dados armazenados no localStorage
+
+      // Verifica se os dados digitados correspondem aos dados salvos
+      if (stored && user === stored.user && pass === stored.pass) {
+        localStorage.setItem('auth', 'true'); // Marca o usuário como autenticado
+        window.location.href = 'tarefas.html'; // Redireciona para a página de tarefas
+      } else {
+        alert('Usuário ou senha incorretos.'); // Mostra alerta de erro
+      }
+    });
+  </script>
+</body>
+</html>

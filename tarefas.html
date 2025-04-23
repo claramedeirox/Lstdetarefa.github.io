@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- Define que este é um documento HTML5 -->
+<html lang="pt-BR">
+<!-- Define o idioma da página como Português do Brasil -->
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- Define o conjunto de caracteres como UTF-8, suportando acentuação -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Garante que a página será responsiva, se adaptando a diferentes tamanhos de tela -->
+
+  <title>Lista de Tarefas</title>
+  <!-- Título da aba do navegador -->
+
+  <link rel="stylesheet" href="style.css" />
+  <!-- Importa o arquivo CSS externo para aplicar o estilo à página -->
+</head>
+
+<body>
+  <!-- Início do corpo da página, onde fica o conteúdo visível -->
+
+  <main class="container">
+    <!-- Container principal da página, usado para aplicar estilos e organizar o layout -->
+
+    <h1>Minhas Tarefas</h1>
+    <!-- Título principal da página -->
+
+    <button id="logout">Sair</button>
+    <!-- Botão para sair (logout), com ID para poder ser acessado via JavaScript -->
+
+    <form id="task-form">
+      <!-- Formulário para adicionar novas tarefas -->
+
+      <label for="task" class="sr-only">Nova Tarefa</label>
+      <!-- Rótulo oculto visualmente (classe 'sr-only') para acessibilidade -->
+      
+      <input type="text" id="task" placeholder="Adicione uma tarefa" required />
+      <!-- Campo de texto onde o usuário digita a nova tarefa -->
+      
+      <button type="submit">Adicionar</button>
+      <!-- Botão para enviar o formulário e adicionar a tarefa -->
+    </form>
+
+    <ul id="task-list" aria-live="polite"></ul>
+    <!-- Lista de tarefas, com atributo aria-live para que leitores de tela informem atualizações -->
+  </main>
+
+  <script src="script.js"></script>
+  <!-- Importa o arquivo JavaScript que adiciona a lógica de funcionamento da lista -->
+</body>
+</html>

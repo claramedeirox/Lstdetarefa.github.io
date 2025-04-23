@@ -1,88 +1,131 @@
+
+/* Define que o box-sizing será border-box para todos os elementos.
+   Isso faz com que padding e border sejam incluídos na largura e altura totais do elemento */
+* {
+  box-sizing: border-box;
+}
+
+/* Estilização do corpo da página */
 body {
-    background-color: #4a2d85;
-    color: #fff;
-    font-family: Roboto, sans-serif;
-    margin: 0;
-    padding: 0;
+  background-color: #4a2d85; /* Define uma cor de fundo roxa escura */
+  color: #fff; /* Define a cor do texto como branca */
+  font-family: 'Roboto', sans-serif; /* Usa a fonte Roboto, ou uma fonte sans-serif como fallback */
+  margin: 0; /* Remove margens externas */
+  padding: 0; /* Remove espaçamento interno */
 }
 
-.container {
-    max-width: 500px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #15003b;
-    border-radius: 10px;
+/* Estilo aplicado aos formulários de login e containers principais */
+.login-form, .container {
+  max-width: 400px; /* Define uma largura máxima */
+  margin: 100px auto; /* Centraliza verticalmente com 100px de margem no topo e na base, e auto nas laterais */
+  padding: 20px; /* Espaçamento interno */
+  background: #15003b; /* Cor de fundo roxa escura */
+  border-radius: 10px; /* Cantos arredondados */
+  text-align: center; /* Centraliza o conteúdo */
 }
 
-h1 {
-    text-align: center;
+/* Espaçamento inferior nos títulos */
+h1, h2 {
+  margin-bottom: 20px;
 }
 
-input {
-    width: 80%;
-    padding: 8px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    align-items: center;
-    justify-content: center;
-
+/* Estilização dos campos de entrada e botões */
+input, button {
+  width: 90%; /* Largura de 90% do container */
+  padding: 10px; /* Espaçamento interno */
+  margin: 10px auto; /* Espaçamento vertical com centralização horizontal */
+  font-size: 16px; /* Tamanho da fonte */
+  border: none; /* Remove bordas padrão */
+  border-radius: 5px; /* Bordas arredondadas */
 }
 
+/* Estilo específico dos botões */
 button {
-    padding: 8px 16px;
-    font-size: 16px;
-    background-color: #321081;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
+  padding: 8px 16px; /* Espaçamento interno vertical e horizontal */
+  font-size: 16px;
+  background-color: #321081; /* Cor de fundo roxa */
+  color: #fff; /* Cor do texto branca */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer; /* Mostra o cursor de mão ao passar o mouse */
+  margin-top: 0px;
 }
 
+/* Remove os marcadores padrão das listas */
 ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
+/* Estilo dos itens da lista de tarefas */
 li {
-    padding: 10px;
-    background-color: #66428f;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
+  padding: 10px;
+  background-color: #66428f; /* Cor de fundo roxa intermediária */
+  margin-bottom: 10px;
+  border-radius: 8px; /* Bordas arredondadas */
+  display: flex; /* Torna o item flexível */
+  flex-direction: column; /* Coloca os elementos em coluna */
+  align-items: center; /* Alinha ao centro */
+  text-align: center;
 }
 
-li:hover {
-    background-color: #7e51b3;
-}   
-
+/* Estilização do texto da tarefa */
 li span {
-    flex: 1;
-    text-align: left;
+  font-weight: bold; /* Deixa o texto em negrito */
+  margin-bottom: 10px;
+  word-break: break-word; /* Quebra palavras grandes para evitar estouro */
 }
 
-.deleteButton {
-    margin-left: 5px;
+/* Grupo de botões de ações (editar, excluir, etc.) */
+.button-group {
+  display: flex;
+  gap: 10px; /* Espaço entre os botões */
+  justify-content: center;
+  flex-wrap: wrap; /* Permite quebrar para a próxima linha em telas pequenas */
 }
 
-.caixa{
-    padding: 10px;
+/* Estilo dos botões de edição e exclusão */
+.editButton, .deleteButton {
+  background-color: #321081; /* Cor de fundo roxa escura */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
 }
 
-@media screen and (max-width: 337px){
-    
-    .editbutton{
-        background-color: red;
-        flex-direction: column;
+/* Estilo aplicado em telas menores que 500px */
+@media screen and (max-width: 500px) {
+  .editButton, .deleteButton {
+    width: 100%; /* Faz os botões ocuparem toda a largura */
+  }
+}
 
-    }
-    .deletebutton{
-        background-color: red;
-        display: inline;
-    
-       
-    }
-    
+/* Efeito visual ao passar o mouse sobre itens da lista */
+li:hover {
+  background: #7e51b3; /* Cor mais clara ao passar o mouse */
+}
+
+/* Classe usada para esconder elementos da tela visualmente,
+   mas que ainda ficam acessíveis para leitores de tela (acessibilidade) */
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Ajustes de layout para telas menores */
+@media screen and (max-width: 500px) {
+  .container, .login-form {
+    width: 90%; /* Reduz a largura para se ajustar melhor à tela pequena */
+    margin: 20px auto; /* Menor margem superior/inferior */
+  }
+
+  li {
+    flex-direction: column; /* Mantém elementos em coluna */
+    gap: 10px; /* Espaço entre os elementos */
+  }
 }
