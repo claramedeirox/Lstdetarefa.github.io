@@ -8,7 +8,7 @@
 /* Estilização do corpo da página */
 body {
   background-color: #4a2d85; /* Define uma cor de fundo roxa escura */
-  color: #000000; /* Define a cor do texto como branca */
+  color: #ffffff; /* Define a cor do texto como branca */
   font-family: 'Roboto', sans-serif; /* Usa a fonte Roboto, ou uma fonte sans-serif como fallback */
   margin: 0; /* Remove margens externas */
   padding: 0; /* Remove espaçamento interno */
@@ -59,6 +59,7 @@ button {
 ul {
   list-style-type: none;
   padding: 0;
+  color:#000;
 }
 
 /* Estilo dos itens da lista de tarefas */
@@ -91,7 +92,7 @@ li span {
 /* Estilo dos botões de edição e exclusão */
 .editButton, .deleteButton {
   background-color: #321081; /* Cor de fundo roxa escura */
-  color: rgb(0, 0, 0);
+  color: rgb(255, 248, 248);
   border: none;
   border-radius: 5px;
   padding: 6px 12px;
@@ -199,7 +200,7 @@ ul#task-list li {
   }
 }
 button:focus {
-  outline: 2px solid #000; /* Foco visual */
+  outline: 2px solid #fffdfd; /* Foco visual */
 }
 
 button:hover {
@@ -226,7 +227,7 @@ ul#task-list li input[type="text"] {
   flex: 1;
   font-size: 16px;
   padding: 8px;
-  border: 1px solid #000000;
+  border: 1px solid #fffdfd;
   background-color: #f9f9f9;
   border-radius: 4px;
 }
@@ -253,7 +254,7 @@ ul#task-list li input[type="text"] {
 
 .delete-btn {
   background-color: #dc3545;
-  color: rgb(2, 2, 2);
+  color: rgb(255, 238, 238);
 }
 
 .delete-btn:hover {
